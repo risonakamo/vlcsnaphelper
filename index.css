@@ -57,11 +57,11 @@ body
     width: auto;
 }
 
-/* .img-viewer img
+.img-viewer img.wide
 {
     width: 100%;
     height: auto;
-} */
+}
 
 /*-- menu bar --*/
 .menu-bar
