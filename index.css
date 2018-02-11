@@ -6,6 +6,12 @@
     src: url("fonts/sg.otf");
 }
 
+@font-face
+{
+    font-family: "ft";
+    src: url("fonts/ft.otf");
+}
+
 html,body,.wrap
 {
     width: 100%;
@@ -67,11 +73,35 @@ body
     height: 100%;
 }
 
+/*-- info panel section --*/
 .menu .info-panel
 {
     width: 500px;
 }
 
+.menu .info-panel > div
+{
+    width: 100%;
+    color: #39869f;
+    font-family: "ft";
+    box-sizing: border-box;
+    padding-left: 15px;
+}
+
+.info-panel .time-code
+{
+    height: 80px;
+    font-size: 63px;
+}
+
+.info-panel .name-info
+{
+    height: 20px;
+    font-size: 16px;
+    margin-top: -10px;
+}
+
+/*-- controls section --*/
 .menu .controls
 {
     width: 400px;
