@@ -74,7 +74,7 @@ body
 {
     height: 100px;
     max-width: 100%;
-    width: 900px;
+    width: 750px;
     margin: auto;
 }
 
@@ -116,7 +116,7 @@ body
 /*-- controls section --*/
 .menu .controls
 {
-    width: 400px;
+    width: 250px;
     box-sizing: border-box;
     padding-top: 11px;
 }
