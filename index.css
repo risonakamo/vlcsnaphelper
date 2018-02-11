@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+@font-face
+{
+    font-family: "sg";
+    src: url("fonts/sg.otf");
+}
+
 html,body,.wrap
 {
     width: 100%;
@@ -39,9 +45,60 @@ body
     width: auto;
 }
 
+/*-- menu bar --*/
 .menu-bar
 {
     height: 100px;
     flex: 0 0 100px;
-    background-color: red;
+}
+
+.menu-bar .menu
+{
+    height: 100px;
+    max-width: 100%;
+    width: 900px;
+    margin: auto;
+}
+
+.menu > div
+{
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+
+.menu .info-panel
+{
+    width: 500px;
+}
+
+.menu .controls
+{
+    width: 400px;
+    box-sizing: border-box;
+    padding-top: 11px;
+}
+
+.controls .control-button
+{
+    display: inline-block;
+    height: 80px;
+    width: 100px;
+    border-color: rgba(185,194,197,0.24) rgba(185,194,197,0.24) #b9c2c5 #b9c2c5;
+    border-style: solid;
+    border-width: 1px 1px 3px 3px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #b9c2c5;
+    font-family: "sg";
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 20px;
+    margin: 0 8px 0 8px;
+}
+
+.control-button.done-button
+{
+    border-color: rgba(115,177,115,.24) rgba(115,177,115,.24) #73b173 #73b173;
+    color: #73b173;
 }
