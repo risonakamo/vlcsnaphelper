@@ -1,0 +1,7 @@
+{
+  "name": "vlcsnaphelper",
+  "version": "0",
+  "description": "help handle vlc snap screenshots",
+  "main": "main.js",
+  "author": "risonakamo"
+}
