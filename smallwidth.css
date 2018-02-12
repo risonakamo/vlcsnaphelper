@@ -1,0 +1,14 @@
+/*-- when width is smaller than 750px --*/
+@media (max-width: 750px)
+{
+    .menu-bar
+    {
+        height: 200px;
+        flex: 0 0 200px;
+    }
+
+    .menu
+    {
+        height: 200px;
+    }
+}

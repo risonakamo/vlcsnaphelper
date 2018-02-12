@@ -64,15 +64,19 @@ body
 }
 
 /*-- menu bar --*/
-.menu-bar
+.menu-bar,.menu
 {
     height: 100px;
+    transition: height .2s;
+}
+
+.menu-bar
+{
     flex: 0 0 100px;
 }
 
 .menu-bar .menu
 {
-    height: 100px;
     max-width: 100%;
     width: 750px;
     margin: auto;
@@ -82,13 +86,14 @@ body
 {
     display: inline-block;
     vertical-align: top;
-    height: 100%;
+    height: 100px;
 }
 
 /*-- info panel section --*/
 .menu .info-panel
 {
     width: 500px;
+    max-width: 100%;
 }
 
 .menu .info-panel > div
