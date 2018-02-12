@@ -142,10 +142,33 @@ body
     box-sizing: border-box;
     padding-top: 20px;
     margin: 0 8px 0 8px;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color .16s;
+}
+
+.controls .control-button:hover
+{
+    background-color: rgba(185,194,197,0.1);
+}
+
+.controls .control-button:active
+{
+    background-color: rgba(185,194,197,0.24);
 }
 
 .control-button.done-button
 {
     border-color: rgba(115,177,115,.24) rgba(115,177,115,.24) #73b173 #73b173;
     color: #73b173;
+}
+
+.control-button.done-button:hover
+{
+    background-color: rgba(115,177,115,.1);
+}
+
+.control-button.done-button:active
+{
+    background-color: rgba(115,177,115,.25);
 }
