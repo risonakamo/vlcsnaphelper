@@ -3,5 +3,8 @@
   "version": "0",
   "description": "help handle vlc snap screenshots",
   "main": "main.js",
-  "author": "risonakamo"
+  "author": "risonakamo",
+  "dependencies": {
+    "fs-extra": "^5.0.0"
+  }
 }

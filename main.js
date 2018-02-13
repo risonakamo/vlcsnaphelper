@@ -1,4 +1,5 @@
 const {app,BrowserWindow}=require("electron");
+var folderHandler=require("./folderhandler");
 
 var _win;
 
