@@ -2,10 +2,12 @@ class imgViewer
 {
     imgViewer();
 
-    element imgWrap;
-    element mainImg;
+    element imgWrap; //container for image for scaling
+    element mainImg; //display image element
 
-    float oImgRatio;
+    int currentPos; //position in image array
 
     void fitImage();
+    void loadImages(array data);
+    void loadImage(int pos);
 }
