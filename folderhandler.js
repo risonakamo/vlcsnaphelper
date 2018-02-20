@@ -23,6 +23,19 @@ class folderHandler
         ipcMain.on("requestFilelist",(e,res)=>{
             e.sender.send("filelist",{files:this.files,folder:this.filepath});
         });
+
+        ipcMain.on("filemove",(e,res)=>{
+            this.movetoFolder(res.fullFile,res.filename,res.folder);
+        });
+    }
+
+    movetoFolder(fullFile,filename,folder="done")
+    {
+        folder=this.filepath+folder;
+
+        fs.ensureDir(folder,()=>{
+            fs.move(fullFile,`${folder}/${filename}`);
+        });
     }
 }
 
