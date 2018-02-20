@@ -5,15 +5,15 @@ class folderHandler
 {
     constructor()
     {
-        var filepath=`C:/Users/khang/Desktop/videos/memes`;
+        this.filepath=`C:/Users/khang/Desktop/videos/memes/`;
 
-        var allfiles=fs.readdirSync(filepath);
+        var allfiles=fs.readdirSync(this.filepath);
         this.files=[];
 
         var fullFilename;
         for (var x=0,l=allfiles.length;x<l;x++)
         {
-            fullFilename=`${filepath}/${allfiles[x]}`;
+            fullFilename=`${this.filepath}/${allfiles[x]}`;
             if (!fs.lstatSync(fullFilename).isDirectory())
             {
                 this.files.push(fullFilename);
@@ -21,14 +21,8 @@ class folderHandler
         }
 
         ipcMain.on("requestFilelist",(e,res)=>{
-            e.sender.send("filelist",this.files);
+            e.sender.send("filelist",{files:this.files,folder:this.filepath});
         });
-    }
-
-    sendFileList(targetwindow)
-    {
-        targetwindow.webContents.send("filelist",this.files);
-        console.log(this.files);
     }
 }
 

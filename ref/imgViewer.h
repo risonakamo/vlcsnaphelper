@@ -12,12 +12,11 @@ class imgViewer
 
     int currentPos; //position in image array
 
-    //this will have to be dynamically updated when folder loading is added!!!!!!!!!
-    string currentDir;
-    int currDirNameLen;
-
     void fitImage();
+    void fitText();
+
     void loadImages(array data);
+
     void navImage(int pos);
 
     void keybinds();

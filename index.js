@@ -16,8 +16,6 @@ class imgViewer
         this.fname=this.menuBar.querySelector(".name-info");
 
         this.currentPos=0;
-        this.currentDir="C:/Users/khang/Desktop/videos/memes/";
-        this.currDirNameLen=this.currentDir.length;
 
         window.addEventListener("resize",(e)=>{
             this.fitImage();
@@ -48,28 +46,35 @@ class imgViewer
         this.menuBar.style.flexBasis=this.innerMenu.offsetHeight+"px";
     }
 
-    loadImages(data)
+    loadImages(folderdata)
     {
+        var data=folderdata.files;
+
+        var currDirNameLen=folderdata.folder.length+1;
+
         this.images=[];
         var fileMatch=/\d\d_\d\d_\d\d/;
-        var tempMatch;
+        var timestring;
 
         for (var x=0,l=data.length;x<l;x++)
         {
-            tempMatch=fileMatch.exec(data[x]);
-            if (tempMatch)
+            timestring=fileMatch.exec(data[x]);
+            if (timestring)
             {
-                tempMatch=tempMatch[0].replace(/_/g,":");
+                timestring=timestring[0].replace(/_/g,":");
             }
 
             else
             {
-                tempMatch="??:??:??";
+                timestring="??:??:??";
             }
 
-            this.images.push([data[x],data[x].slice(this.currDirNameLen),tempMatch]);
+            this.images.push({
+                fullPath:data[x],
+                filename:data[x].slice(currDirNameLen),
+                timeString:timestring
+            });
         }
-
 
         this.navImage(0);
     }
@@ -81,9 +86,9 @@ class imgViewer
             return;
         }
 
-        this.mainImg.src=this.images[pos][0];
-        this.fname.innerText=this.images[pos][1];
-        this.timeCode.innerText=this.images[pos][2];
+        this.mainImg.src=this.images[pos].fullPath;
+        this.fname.innerText=this.images[pos].filename;
+        this.timeCode.innerText=this.images[pos].timeString;
 
         this.currentPos=pos;
 

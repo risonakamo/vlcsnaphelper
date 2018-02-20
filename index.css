@@ -23,6 +23,7 @@ body
     margin: 0;
     font-size: 0;
     background-color: #364340;
+    overflow: hidden;
 }
 
 .wrap
