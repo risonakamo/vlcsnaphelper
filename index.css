@@ -175,3 +175,21 @@ body
 {
     background-color: rgba(115,177,115,.25);
 }
+
+.control-button.done-button.pressed
+{
+    animation: .45s donePress;
+}
+
+@keyframes donePress
+{
+    50%
+    {
+        background-color: rgba(115,177,115,.25);
+    }
+
+    100%
+    {
+        background-color: rgba(115,177,115,0);
+    }
+}

@@ -8,10 +8,12 @@ class imgViewer
 
         this.menuBar=doc.querySelector(".menu-bar");
         this.innerMenu=this.menuBar.querySelector(".menu");
-        this.timeCode=this.menuBar.querySelector(".time-code");
-        this.fname=this.menuBar.querySelector(".name-info");
+        this.timeCode=this.innerMenu.querySelector(".time-code");
+        this.fname=this.innerMenu.querySelector(".name-info");
+        this.controlButtons=this.innerMenu.querySelectorAll(".control-button");
 
         this.currentPos=0;
+        this.enterDown=0;
 
         window.addEventListener("resize",(e)=>{
             this.fitImage();
@@ -111,6 +113,23 @@ class imgViewer
                 break;
 
                 case "Enter":
+                if (!this.enterDown)
+                {
+                    this.enterDown=1;
+                    this.controlButtons[1].classList.remove("pressed");
+
+                    setTimeout(()=>{
+                        this.controlButtons[1].classList.add("pressed");
+                    },1);
+                }
+                break;
+            }
+        });
+
+        document.addEventListener("keyup",(e)=>{
+            if (e.key=="Enter")
+            {
+                this.enterDown=0;
                 this.doneImage();
             }
         });
