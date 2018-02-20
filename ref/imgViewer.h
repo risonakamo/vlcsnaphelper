@@ -5,6 +5,8 @@ class imgViewer
     element imgWrap; //container for image for scaling
     element mainImg; //display image element
 
+    element menuBar;
+    element innerMenu;
     element timeCode; //time code display element
     element fname; //name display element
 

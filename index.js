@@ -10,8 +10,10 @@ class imgViewer
         this.imgWrap=doc.querySelector(".img-wrap");
         this.mainImg=this.imgWrap.children[0];
 
-        this.timeCode=doc.querySelector(".time-code");
-        this.fname=doc.querySelector(".name-info");
+        this.menuBar=doc.querySelector(".menu-bar");
+        this.innerMenu=this.menuBar.querySelector(".menu");
+        this.timeCode=this.menuBar.querySelector(".time-code");
+        this.fname=this.menuBar.querySelector(".name-info");
 
         this.currentPos=0;
         this.currentDir="C:/Users/khang/Desktop/videos/memes/";
@@ -41,6 +43,11 @@ class imgViewer
         }
     }
 
+    fitText()
+    {
+        this.menuBar.style.flexBasis=this.innerMenu.offsetHeight+"px";
+    }
+
     loadImages(data)
     {
         this.images=[];
@@ -63,6 +70,7 @@ class imgViewer
             this.images.push([data[x],data[x].slice(this.currDirNameLen),tempMatch]);
         }
 
+
         this.navImage(0);
     }
 
@@ -78,7 +86,14 @@ class imgViewer
         this.timeCode.innerText=this.images[pos][2];
 
         this.currentPos=pos;
-        this.fitImage();
+
+        setTimeout(()=>{
+            this.fitText();
+
+            setTimeout(()=>{
+                this.fitImage();
+            },3);
+        },3);
     }
 
     keybinds()

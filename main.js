@@ -1,4 +1,4 @@
-const {app,BrowserWindow}=require("electron");
+const {app,BrowserWindow,ipcMain}=require("electron");
 var folderHandler=require("./folderhandler");
 
 var _win;

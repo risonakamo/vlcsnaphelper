@@ -66,7 +66,7 @@ body
 /*-- menu bar --*/
 .menu-bar,.menu
 {
-    height: 100px;
+    min-height: 100px;
     transition: height .2s;
 }
 
@@ -86,7 +86,7 @@ body
 {
     display: inline-block;
     vertical-align: top;
-    height: 100px;
+    min-height: 100px;
 }
 
 /*-- info panel section --*/
@@ -113,9 +113,10 @@ body
 
 .info-panel .name-info
 {
-    height: 20px;
+    min-height: 20px;
     font-size: 16px;
     margin-top: -10px;
+    padding: 0 15px 20px 15px;
 }
 
 /*-- controls section --*/
