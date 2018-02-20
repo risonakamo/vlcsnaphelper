@@ -74,6 +74,7 @@ body
 .menu-bar
 {
     flex: 0 0 100px;
+    transition: flex-basis .2s;
 }
 
 .menu-bar .menu
