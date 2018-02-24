@@ -104,10 +104,12 @@ class imgViewer
         document.addEventListener("keydown",(e)=>{
             switch (e.key)
             {
+                case "d":
                 case "ArrowRight":
                 this.navImage(this.currentPos+1);
                 break;
 
+                case "a":
                 case "ArrowLeft":
                 this.navImage(this.currentPos-1);
                 break;

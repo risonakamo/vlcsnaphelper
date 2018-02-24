@@ -21,9 +21,11 @@ class imgViewer
     void fitImage();
     void fitText();
 
-    void loadImages(array data);
+    void loadImages(array data); //given array of image data, loads the viewer
 
     void navImage(int pos);
 
     void keybinds();
+
+    void doneImage();
 }
