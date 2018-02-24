@@ -56,7 +56,7 @@ class imgViewer
 
         for (var x=0,l=data.length;x<l;x++)
         {
-            timestring=fileMatch.exec(data[x]);
+            timestring=fileMatch.exec(data[x][0]);
             if (timestring)
             {
                 timestring=timestring[0].replace(/_/g,":");
@@ -68,8 +68,8 @@ class imgViewer
             }
 
             this.images.push({
-                fullPath:data[x],
-                filename:data[x].slice(currDirNameLen),
+                fullPath:data[x][0],
+                filename:data[x][0].slice(currDirNameLen),
                 timeString:timestring
             });
         }

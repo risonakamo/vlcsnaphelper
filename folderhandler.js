@@ -11,15 +11,31 @@ class folderHandler
         this.files=[];
 
         var fullFilename;
+        var filestat;
         for (var x=0,l=allfiles.length;x<l;x++)
         {
             fullFilename=`${this.filepath}/${allfiles[x]}`;
-            if (!fs.lstatSync(fullFilename).isDirectory())
+            filestat=fs.statSync(fullFilename);
+            if (!filestat.isDirectory())
             {
-                this.files.push(fullFilename);
+                this.files.push([fullFilename,filestat.birthtimeMs]);
             }
         }
 
+        this.files.sort((a,b)=>{
+            if (a[1]>b[1])
+            {
+                return -1;
+            }
+
+            return 1;
+        });
+
+        this.msgHandlers();
+    }
+
+    msgHandlers()
+    {
         ipcMain.on("requestFilelist",(e,res)=>{
             e.sender.send("filelist",{files:this.files,folder:this.filepath});
         });
