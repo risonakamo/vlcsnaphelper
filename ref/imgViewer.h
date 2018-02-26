@@ -27,5 +27,5 @@ class imgViewer
 
     void keybinds();
 
-    void doneImage();
+    void moveImage(string folder);
 }

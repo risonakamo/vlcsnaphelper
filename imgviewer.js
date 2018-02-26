@@ -129,20 +129,26 @@ class imgViewer
         });
 
         document.addEventListener("keyup",(e)=>{
-            if (e.key=="Enter")
+            switch (e.key)
             {
+                case "Enter":
                 this.enterDown=0;
-                this.doneImage();
+                this.moveImage("done");
+                break;
+
+                case "k":
+                this.moveImage("keep");
+                break;
             }
         });
     }
 
-    doneImage()
+    moveImage(folder)
     {
         ipcRenderer.send("filemove",{
             fullFile:this.images[this.currentPos].fullPath,
             filename:this.images[this.currentPos].filename,
-            folder:"done"
+            folder:folder
         });
 
         this.images.splice(this.currentPos,1);
