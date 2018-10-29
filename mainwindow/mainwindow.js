@@ -1,6 +1,10 @@
+const {ipcRenderer}=require("electron");
+
 window.onload=main;
 
 function main()
 {
-    ReactDOM.render(React.createElement(DisplayMain),document.querySelector(".wrap"));
+    ipcRenderer.on("imgdata",(e,data)=>{
+        ReactDOM.render(React.createElement(DisplayMain,{data}),document.querySelector(".wrap"));
+    });
 }

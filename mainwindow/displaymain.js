@@ -1,16 +1,29 @@
-//DisplayMain()
+//DisplayMain(object-array data)
 class DisplayMain extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.props.data,
+      currentImage: 0
+    };
+  }
+
+  keyControl() {}
+
   render() {
-    return React.createElement(React.Fragment, null, React.createElement(ImgDisplay, null), React.createElement("div", {
+    return React.createElement(React.Fragment, null, React.createElement(ImgDisplay, {
+      data: this.state.data[this.state.currentImage]
+    }), React.createElement("div", {
       className: "menu"
     }, React.createElement("div", {
       className: "statuses"
-    }, React.createElement("h1", null, "00:22:03"), React.createElement("p", null, "00_18_24_[HorribleSubs] Sora to Umi no Aida - 04 [1080p].mkv_00001.png")), React.createElement("div", {
+    }, React.createElement("h1", null, this.state.data[this.state.currentImage].time), React.createElement("p", null, this.state.data[this.state.currentImage].fullfile)), React.createElement("div", {
       className: "control"
     })));
   }
 
-} //ImgDisplay()
+} //ImgDisplay(object data)
+//data: imageData object
 
 
 class ImgDisplay extends React.Component {
@@ -50,7 +63,7 @@ class ImgDisplay extends React.Component {
       ref: this.displayDiv
     }, React.createElement("img", {
       className: imgFitClass,
-      src: "test.png",
+      src: this.props.data.imagepath,
       ref: this.theImg,
       onLoad: this.fitImg
     }));

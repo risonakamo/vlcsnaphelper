@@ -3,12 +3,7 @@ const fs=require("fs");
 /*ImageControl(function completeCallback(object-array data))
 -completeCallback: callback function to be called with array of
     image data objects when completed
-    image data object:
-    {
-        time: string, the time string
-        filename: string, the video filename
-        fullfile: string, the full file name
-    }
+    imageData object specs in dataspecs
 
 -make sure the imageDir is set
 */
@@ -56,7 +51,8 @@ class ImageControl
 
                 this.images.push({
                     time:`${rmatch[1]}:${rmatch[2]}:${rmatch[3]}`,
-                    filename:rmatch[4],
+                    // filename:rmatch[4],
+                    imagepath:`${this.imageDir}/${x}`,
                     fullfile:x
                 });
 
@@ -75,6 +71,4 @@ class ImageControl
     }
 }
 
-var a=new ImageControl((data)=>{
-    console.log(data.length);
-});
+module.exports=ImageControl;

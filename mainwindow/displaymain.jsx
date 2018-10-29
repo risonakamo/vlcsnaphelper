@@ -1,15 +1,30 @@
-//DisplayMain()
+//DisplayMain(object-array data)
 class DisplayMain extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+
+    this.state={
+      data:this.props.data,
+      currentImage:0
+    }
+  }
+
+  keyControl()
+  {
+
+  }
+
   render()
   {
     return (<>
-      <ImgDisplay/>
+      <ImgDisplay data={this.state.data[this.state.currentImage]}/>
 
       <div className="menu">
         <div className="statuses">
-          <h1>00:22:03</h1>
-          <p>00_18_24_[HorribleSubs] Sora to Umi no Aida - 04 [1080p].mkv_00001.png</p>
+          <h1>{this.state.data[this.state.currentImage].time}</h1>
+          <p>{this.state.data[this.state.currentImage].fullfile}</p>
         </div>
 
         <div className="control">
@@ -20,7 +35,8 @@ class DisplayMain extends React.Component
   }
 }
 
-//ImgDisplay()
+//ImgDisplay(object data)
+//data: imageData object
 class ImgDisplay extends React.Component
 {
   constructor(props)
@@ -63,7 +79,7 @@ class ImgDisplay extends React.Component
 
     return (
       <div className="img-display" ref={this.displayDiv}>
-        <img className={imgFitClass} src="test.png" ref={this.theImg} onLoad={this.fitImg}/>
+        <img className={imgFitClass} src={this.props.data.imagepath} ref={this.theImg} onLoad={this.fitImg}/>
       </div>
     );
   }

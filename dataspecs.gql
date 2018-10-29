@@ -1,0 +1,8 @@
+type imageData
+{
+    time: string #string time
+    # seconds: int
+    # filename: string
+    imagepath: string #the full path to the image
+    fullfile: string #the full file name without any path
+}
