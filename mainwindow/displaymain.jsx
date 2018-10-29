@@ -28,7 +28,11 @@ class DisplayMain extends React.Component
         break;
 
         case "Enter":
-        this.removeImage(this.state.currentImage);
+        this.removeImage(this.state.currentImage,0);
+        break;
+
+        case "Shift":
+        this.removeImage(this.state.currentImage,1);
         break;
       }
     });
@@ -48,9 +52,10 @@ class DisplayMain extends React.Component
   }
 
   //remove the image at the specified index in the images array
-  removeImage(index)
+  //and place in the specified moveDir index
+  removeImage(index,moveDir)
   {
-    _imageControl.relocateFile(this.state.data[this.state.currentImage],0);
+    _imageControl.relocateFile(this.state.data[this.state.currentImage],moveDir);
 
     this.state.data.splice(index,1);
 
