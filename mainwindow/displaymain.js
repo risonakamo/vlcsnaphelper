@@ -48,6 +48,10 @@ class DisplayMain extends React.Component {
 
 
   removeImage(index, moveDir) {
+    if (!this.state.data.length) {
+      return;
+    }
+
     _imageControl.relocateFile(this.state.data[this.state.currentImage], moveDir);
 
     this.state.data.splice(index, 1);
@@ -63,13 +67,25 @@ class DisplayMain extends React.Component {
   }
 
   render() {
+    var currentImage = null;
+    var statuses = {
+      time: "no more images",
+      fullfile: ""
+    };
+
+    if (this.state.data.length) {
+      currentImage = this.state.data[this.state.currentImage];
+      statuses.time = currentImage.time;
+      statuses.fullfile = currentImage.fullfile;
+    }
+
     return React.createElement(React.Fragment, null, React.createElement(ImgDisplay, {
-      data: this.state.data[this.state.currentImage]
+      data: currentImage
     }), React.createElement("div", {
       className: "menu"
     }, React.createElement("div", {
       className: "statuses"
-    }, React.createElement("h1", null, this.state.data[this.state.currentImage].time), React.createElement("p", null, this.state.data[this.state.currentImage].fullfile)), React.createElement("div", {
+    }, React.createElement("h1", null, statuses.time), React.createElement("p", null, statuses.fullfile)), React.createElement("div", {
       className: "control"
     })));
   }
@@ -104,6 +120,10 @@ class ImgDisplay extends React.Component {
   }
 
   render() {
+    if (!this.props.data) {
+      return null;
+    }
+
     var imgFitClass = "";
 
     if (this.state.tall) {

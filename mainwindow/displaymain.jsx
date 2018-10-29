@@ -55,6 +55,11 @@ class DisplayMain extends React.Component
   //and place in the specified moveDir index
   removeImage(index,moveDir)
   {
+    if (!this.state.data.length)
+    {
+      return;
+    }
+
     _imageControl.relocateFile(this.state.data[this.state.currentImage],moveDir);
 
     this.state.data.splice(index,1);
@@ -71,13 +76,26 @@ class DisplayMain extends React.Component
 
   render()
   {
+    var currentImage=null;
+    var statuses={
+      time:"no more images",
+      fullfile:""
+    };
+
+    if (this.state.data.length)
+    {
+      currentImage=this.state.data[this.state.currentImage]
+      statuses.time=currentImage.time;
+      statuses.fullfile=currentImage.fullfile;
+    }
+
     return (<>
-      <ImgDisplay data={this.state.data[this.state.currentImage]}/>
+      <ImgDisplay data={currentImage}/>
 
       <div className="menu">
         <div className="statuses">
-          <h1>{this.state.data[this.state.currentImage].time}</h1>
-          <p>{this.state.data[this.state.currentImage].fullfile}</p>
+          <h1>{statuses.time}</h1>
+          <p>{statuses.fullfile}</p>
         </div>
 
         <div className="control">
@@ -124,6 +142,11 @@ class ImgDisplay extends React.Component
 
   render()
   {
+    if (!this.props.data)
+    {
+      return null;
+    }
+
     var imgFitClass="";
     if (this.state.tall)
     {
