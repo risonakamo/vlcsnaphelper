@@ -1,6 +1,7 @@
 {
   "name": "vlcsnaphelper2",
   "main": "main.js",
+  "version":"2.0.0",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-react": "^7.0.0",

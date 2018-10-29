@@ -1,4 +1,24 @@
 @charset "UTF-8";
+@font-face {
+  src: url("../font/NotoSansCJKjp-Medium.woff2");
+  font-family: "noto jp";
+  font-weight: 500;
+}
+@font-face {
+  src: url("../font/NotoSansCJKjp-Regular.woff2");
+  font-family: "noto jp";
+  font-weight: 400;
+}
+@font-face {
+  src: url("../font/NotoSansCJKjp-Light.woff2");
+  font-family: "noto jp";
+  font-weight: 300;
+}
+@font-face {
+  src: url("../font/NotoSansCJKjp-Thin.woff2");
+  font-family: "noto jp";
+  font-weight: 200;
+}
 html {
   height: 100%;
 }
@@ -7,6 +27,12 @@ body {
   margin: 0;
   font-size: 0;
   background-color: #364340;
+  font-family: "noto jp";
+  color: #b9c2c5;
+}
+h1,
+p {
+  margin: 0;
 }
 .wrap {
   display: flex;
@@ -20,10 +46,28 @@ body {
   display: flex;
   flex: 1;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .img-display img {
   width: 100%;
 }
 .menu {
   min-height: 130px;
+  font-size: 20px;
+}
+.menu .statuses {
+  width: 500px;
+  display: inline-block;
+  color: #39869f;
+}
+.menu .statuses h1 {
+  height: 65px;
+  font-size: 65px;
+  font-weight: 400;
+  line-height: 1;
+}
+.menu .statuses p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.2;
 }
