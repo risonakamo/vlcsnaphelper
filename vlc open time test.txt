@@ -1,0 +1,1 @@
+vlc --start-time=100 --one-instance --no-qt-video-autoresize  "[HA^ss^] Sunohara-sou no Kanrinin-san - 12 [89D6194A].mkv"

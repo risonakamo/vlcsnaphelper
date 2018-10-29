@@ -1,0 +1,29 @@
+@charset "UTF-8";
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 0;
+  background-color: #364340;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.wrap > div {
+  width: 100%;
+}
+.img-display {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+.img-display img {
+  width: 100%;
+}
+.menu {
+  min-height: 130px;
+}
