@@ -16,6 +16,8 @@ class DisplayMain extends React.Component
   //global window keyboard operations
   keyControl()
   {
+    var keyDownAlready=[0,0];
+
     window.addEventListener("keydown",(e)=>{
       switch (e.key)
       {
@@ -28,11 +30,36 @@ class DisplayMain extends React.Component
         break;
 
         case "Enter":
+        if (keyDownAlready[0])
+        {
+          return;
+        }
+
+        keyDownAlready[0]=1;
         this.removeImage(this.state.currentImage,0);
         break;
 
         case "Shift":
+        if (keyDownAlready[1])
+        {
+          return;
+        }
+
+        keyDownAlready[1]=1;
         this.removeImage(this.state.currentImage,1);
+        break;
+      }
+    });
+
+    window.addEventListener("keyup",(e)=>{
+      switch (e.key)
+      {
+        case "Enter":
+        keyDownAlready[0]=0;
+        break;
+
+        case "Shift":
+        keyDownAlready[1]=0;
         break;
       }
     });
