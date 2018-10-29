@@ -1,0 +1,20 @@
+@font-face {
+  src: url("../font/NotoSansCJKjp-Medium.woff2");
+  font-family: "noto jp";
+  font-weight: 500;
+}
+@font-face {
+  src: url("../font/NotoSansCJKjp-Regular.woff2");
+  font-family: "noto jp";
+  font-weight: 400;
+}
+@font-face {
+  src: url("../font/NotoSansCJKjp-Light.woff2");
+  font-family: "noto jp";
+  font-weight: 300;
+}
+@font-face {
+  src: url("../font/NotoSansCJKjp-Thin.woff2");
+  font-family: "noto jp";
+  font-weight: 200;
+}
