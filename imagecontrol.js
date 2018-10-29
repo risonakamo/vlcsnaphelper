@@ -12,7 +12,11 @@ class ImageControl
     constructor(completeCallback)
     {
         this.completeCallback=completeCallback;
+
+        //set to the directory with images
         this.imageDir="/Users/khang/Desktop/videos/memes";
+
+        //0: done, 1: keep
         this.moveDirs=["/Users/khang/Desktop/videos/memes/done","/Users/khang/Desktop/videos/memes/keep"];
 
         if (!fs.existsSync(this.imageDir))

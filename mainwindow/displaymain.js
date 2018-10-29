@@ -12,10 +12,18 @@ class DisplayMain extends React.Component {
 
   keyControl() {
     window.addEventListener("keydown", e => {
-      if (e.key == "ArrowRight") {
-        this.changeImage(1);
-      } else if (e.key == "ArrowLeft") {
-        this.changeImage(-1);
+      switch (e.key) {
+        case "ArrowRight":
+          this.changeImage(1);
+          break;
+
+        case "ArrowLeft":
+          this.changeImage(-1);
+          break;
+
+        case "Enter":
+          this.removeImage(this.state.currentImage);
+          break;
       }
     });
   } //increment current image index in specified direction
@@ -31,6 +39,22 @@ class DisplayMain extends React.Component {
     this.setState({
       currentImage: nextImage
     });
+  } //remove the image at the specified index in the images array
+
+
+  removeImage(index) {
+    _imageControl.relocateFile(this.state.data[this.state.currentImage], 0);
+
+    this.state.data.splice(index, 1);
+    var changeData = {
+      data: this.state.data
+    };
+
+    if (this.state.currentImage >= this.state.data.length) {
+      changeData.currentImage = this.state.currentImage - 1;
+    }
+
+    this.setState(changeData);
   }
 
   render() {
