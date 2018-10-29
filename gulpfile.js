@@ -15,7 +15,7 @@ var defaultPlumber=(err)=>{
 };
 
 var lessConfig={
-    targets:["**/*.less","*.less"],
+    targets:["**/*.less","*.less","!**/fonts.less"],
     base:"."
 };
 
