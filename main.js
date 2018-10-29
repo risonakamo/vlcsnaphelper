@@ -5,7 +5,7 @@ var _win;
 
 function main()
 {
-    _win=new BrowserWindow({width:850,height:550,useContentSize:true,webPreferences:{webSecurity:false},show:false});
+    _win=new BrowserWindow({width:850,height:550,useContentSize:true,show:false});
 
     _win.on("ready-to-show",()=>{
         var imgControl=new ImageControl((data)=>{

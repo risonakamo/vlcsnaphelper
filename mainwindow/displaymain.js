@@ -6,9 +6,32 @@ class DisplayMain extends React.Component {
       data: this.props.data,
       currentImage: 0
     };
-  }
+    this.keyControl();
+  } //global window keyboard operations
 
-  keyControl() {}
+
+  keyControl() {
+    window.addEventListener("keydown", e => {
+      if (e.key == "ArrowRight") {
+        this.changeImage(1);
+      } else if (e.key == "ArrowLeft") {
+        this.changeImage(-1);
+      }
+    });
+  } //increment current image index in specified direction
+
+
+  changeImage(add) {
+    var nextImage = this.state.currentImage + add;
+
+    if (nextImage < 0 || nextImage >= this.state.data.length) {
+      return;
+    }
+
+    this.setState({
+      currentImage: nextImage
+    });
+  }
 
   render() {
     return React.createElement(React.Fragment, null, React.createElement(ImgDisplay, {
