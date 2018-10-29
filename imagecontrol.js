@@ -1,4 +1,4 @@
-const fs=require("fs");
+const fs=require("fs-extra");
 
 /*ImageControl(function completeCallback(object-array data))
 -completeCallback: callback function to be called with array of
@@ -13,6 +13,7 @@ class ImageControl
     {
         this.completeCallback=completeCallback;
         this.imageDir="/Users/khang/Desktop/videos/memes";
+        this.moveDirs=["/Users/khang/Desktop/videos/memes/done","/Users/khang/Desktop/videos/memes/keep"];
 
         if (!fs.existsSync(this.imageDir))
         {
@@ -68,6 +69,13 @@ class ImageControl
         {
             this.completeCallback(this.images);
         }
+    }
+
+    //give an imageData object and an index corresponding
+    //to moveDirs to move the file to
+    relocateFile(fileData,moveDir)
+    {
+        fs.move(fileData.imagepath,`${this.moveDirs[moveDir]}/${fileData.fullfile}`);
     }
 }
 

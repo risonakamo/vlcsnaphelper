@@ -1,20 +1,10 @@
-const {app,BrowserWindow,ipcMain}=require("electron");
-const ImageControl=require("./imagecontrol.js");
+const {app,BrowserWindow}=require("electron");
 
 var _win;
 
 function main()
 {
-    _win=new BrowserWindow({width:850,height:550,useContentSize:true,show:false});
-
-    _win.on("ready-to-show",()=>{
-        var imgControl=new ImageControl((data)=>{
-            _win.webContents.send("imgdata",data);
-        });
-
-        _win.show();
-    });
-
+    _win=new BrowserWindow({width:850,height:550,useContentSize:true});
     _win.loadURL(`${__dirname}/mainwindow/mainwindow.html`);
 }
 
