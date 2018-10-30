@@ -102,6 +102,9 @@ p {
 .menu .statuses .button:active {
   background-color: rgba(185,194,197, 0.24);
 }
+.menu .statuses .button.animatePress {
+  animation: pressButton 0.2s;
+}
 .menu .footer p {
   font-size: 12px;
   font-weight: 200;

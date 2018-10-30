@@ -7,6 +7,8 @@ class DisplayMain extends React.Component
     this.doneAction=this.doneAction.bind(this);
     this.keepAction=this.keepAction.bind(this);
     this.openVLCAction=this.openVLCAction.bind(this);
+    this.changeImage=this.changeImage.bind(this);
+    this.collectButtonRefs=this.collectButtonRefs.bind(this);
 
     this.state={
       data:this.props.data,
@@ -14,6 +16,7 @@ class DisplayMain extends React.Component
     }
 
     this.keyControl();
+    this.mainButtons=[]; //refs of main buttons in order
   }
 
   //global window keyboard operations
@@ -32,11 +35,11 @@ class DisplayMain extends React.Component
       switch (e.key)
       {
         case "ArrowRight":
-        this.changeImage(1);
+        this.changeImage(1,1);
         break;
 
         case "ArrowLeft":
-        this.changeImage(-1);
+        this.changeImage(-1,1);
         break;
 
         case "Enter":
@@ -46,7 +49,7 @@ class DisplayMain extends React.Component
         }
 
         this.keyDownAlready[0]=1;
-        this.doneAction();
+        this.doneAction(null,1);
         break;
 
         case " ":
@@ -56,7 +59,7 @@ class DisplayMain extends React.Component
         }
 
         this.keyDownAlready[2]=1;
-        this.openVLCAction();
+        this.openVLCAction(null,1);
         break;
 
         case "k":
@@ -67,7 +70,7 @@ class DisplayMain extends React.Component
         }
 
         this.keyDownAlready[1]=1;
-        this.keepAction();
+        this.keepAction(null,1);
         break;
       }
     });
@@ -92,7 +95,7 @@ class DisplayMain extends React.Component
   }
 
   //increment current image index in specified direction
-  changeImage(add)
+  changeImage(add,playAnimation=0)
   {
     var nextImage=this.state.currentImage+add;
 
@@ -102,6 +105,19 @@ class DisplayMain extends React.Component
     }
 
     this.setState({currentImage:nextImage});
+
+    if (playAnimation)
+    {
+      if (add<0)
+      {
+        this.pressAnimation(3);
+      }
+
+      else
+      {
+        this.pressAnimation(4);
+      }
+    }
   }
 
   //remove the image at the specified index in the images array
@@ -129,9 +145,14 @@ class DisplayMain extends React.Component
 
   //the done action. put in a function for organisation
   //done the current image and remove it from the array
-  doneAction()
+  doneAction(e,animate=0)
   {
     this.removeImage(this.state.currentImage,0);
+
+    if (animate)
+    {
+      this.pressAnimation(0);
+    }
   }
 
   //the keep action. put in a function for organisation
@@ -141,15 +162,41 @@ class DisplayMain extends React.Component
     merge it? well cause it wouldn't be intuative. these
     weren't even suppose to be in functions anyway.
     so whatever.*/
-  keepAction()
+  keepAction(e,animate=0)
   {
     this.removeImage(this.state.currentImage,1);
+
+    if (animate)
+    {
+      this.pressAnimation(1);
+    }
   }
 
   //open vlc for the current image
-  openVLCAction()
+  openVLCAction(e,animate)
   {
     _imageControl.openVLC(this.state.data[this.state.currentImage]);
+
+    if (animate)
+    {
+      this.pressAnimation(2);
+    }
+  }
+
+  //ref function for main buttons
+  collectButtonRefs(ref)
+  {
+    this.mainButtons.push(ref);
+  }
+
+  //play the press animation of mainbutton at certain index
+  pressAnimation(index)
+  {
+    //reset animation trick
+    this.mainButtons[index].animation="none";
+    this.mainButtons[index].offsetHeight;
+    this.mainButtons[index].animation=null;
+    this.mainButtons[index].classList.add("animatePress");
   }
 
   render()
@@ -175,11 +222,11 @@ class DisplayMain extends React.Component
         <div className="statuses">
           <h1>{statuses.time}</h1>
 
-          <div className="button" onClick={this.doneAction}>DONE</div>
-          <div className="button" onClick={this.keepAction}>KEEP</div>
-          <div className="button" onClick={this.openVLCAction}>LINK</div>
-          <div className="button half" onClick={()=>{this.changeImage(-1)}}>🠸</div>
-          <div className="button half" onClick={()=>{this.changeImage(1)}}>🠺</div>
+          <div className="button" onClick={this.doneAction} ref={this.collectButtonRefs}>DONE</div>
+          <div className="button" onClick={this.keepAction} ref={this.collectButtonRefs}>KEEP</div>
+          <div className="button" onClick={this.openVLCAction} ref={this.collectButtonRefs}>LINK</div>
+          <div className="button half" onClick={()=>{this.changeImage(-1)}} ref={this.collectButtonRefs}>🠸</div>
+          <div className="button half" onClick={()=>{this.changeImage(1)}} ref={this.collectButtonRefs}>🠺</div>
         </div>
 
         <div className="footer">

@@ -4,11 +4,14 @@ class DisplayMain extends React.Component {
     this.doneAction = this.doneAction.bind(this);
     this.keepAction = this.keepAction.bind(this);
     this.openVLCAction = this.openVLCAction.bind(this);
+    this.changeImage = this.changeImage.bind(this);
+    this.collectButtonRefs = this.collectButtonRefs.bind(this);
     this.state = {
       data: this.props.data,
       currentImage: 0
     };
     this.keyControl();
+    this.mainButtons = [];
   }
 
   keyControl() {
@@ -20,11 +23,11 @@ class DisplayMain extends React.Component {
 
       switch (e.key) {
         case "ArrowRight":
-          this.changeImage(1);
+          this.changeImage(1, 1);
           break;
 
         case "ArrowLeft":
-          this.changeImage(-1);
+          this.changeImage(-1, 1);
           break;
 
         case "Enter":
@@ -33,7 +36,7 @@ class DisplayMain extends React.Component {
           }
 
           this.keyDownAlready[0] = 1;
-          this.doneAction();
+          this.doneAction(null, 1);
           break;
 
         case " ":
@@ -42,7 +45,7 @@ class DisplayMain extends React.Component {
           }
 
           this.keyDownAlready[2] = 1;
-          this.openVLCAction();
+          this.openVLCAction(null, 1);
           break;
 
         case "k":
@@ -52,7 +55,7 @@ class DisplayMain extends React.Component {
           }
 
           this.keyDownAlready[1] = 1;
-          this.keepAction();
+          this.keepAction(null, 1);
           break;
       }
     });
@@ -74,7 +77,7 @@ class DisplayMain extends React.Component {
     });
   }
 
-  changeImage(add) {
+  changeImage(add, playAnimation = 0) {
     var nextImage = this.state.currentImage + add;
 
     if (nextImage < 0 || nextImage >= this.state.data.length) {
@@ -84,6 +87,14 @@ class DisplayMain extends React.Component {
     this.setState({
       currentImage: nextImage
     });
+
+    if (playAnimation) {
+      if (add < 0) {
+        this.pressAnimation(3);
+      } else {
+        this.pressAnimation(4);
+      }
+    }
   }
 
   removeImage(index, moveDir) {
@@ -105,16 +116,39 @@ class DisplayMain extends React.Component {
     this.setState(changeData);
   }
 
-  doneAction() {
+  doneAction(e, animate = 0) {
     this.removeImage(this.state.currentImage, 0);
+
+    if (animate) {
+      this.pressAnimation(0);
+    }
   }
 
-  keepAction() {
+  keepAction(e, animate = 0) {
     this.removeImage(this.state.currentImage, 1);
+
+    if (animate) {
+      this.pressAnimation(1);
+    }
   }
 
-  openVLCAction() {
+  openVLCAction(e, animate) {
     _imageControl.openVLC(this.state.data[this.state.currentImage]);
+
+    if (animate) {
+      this.pressAnimation(2);
+    }
+  }
+
+  collectButtonRefs(ref) {
+    this.mainButtons.push(ref);
+  }
+
+  pressAnimation(index) {
+    this.mainButtons[index].animation = "none";
+    this.mainButtons[index].offsetHeight;
+    this.mainButtons[index].animation = null;
+    this.mainButtons[index].classList.add("animatePress");
   }
 
   render() {
@@ -139,23 +173,28 @@ class DisplayMain extends React.Component {
       className: "statuses"
     }, React.createElement("h1", null, statuses.time), React.createElement("div", {
       className: "button",
-      onClick: this.doneAction
+      onClick: this.doneAction,
+      ref: this.collectButtonRefs
     }, "DONE"), React.createElement("div", {
       className: "button",
-      onClick: this.keepAction
+      onClick: this.keepAction,
+      ref: this.collectButtonRefs
     }, "KEEP"), React.createElement("div", {
       className: "button",
-      onClick: this.openVLCAction
+      onClick: this.openVLCAction,
+      ref: this.collectButtonRefs
     }, "LINK"), React.createElement("div", {
       className: "button half",
       onClick: () => {
         this.changeImage(-1);
-      }
+      },
+      ref: this.collectButtonRefs
     }, "\uD83E\uDC38"), React.createElement("div", {
       className: "button half",
       onClick: () => {
         this.changeImage(1);
-      }
+      },
+      ref: this.collectButtonRefs
     }, "\uD83E\uDC3A")), React.createElement("div", {
       className: "footer"
     }, React.createElement("p", null, `${statuses.fullfile} ${imageCount}`))));
