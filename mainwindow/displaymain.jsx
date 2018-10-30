@@ -131,6 +131,7 @@ class DisplayMain extends React.Component
       time:"no more images",
       fullfile:""
     };
+    var imageCount=`(${this.state.currentImage+1}/${this.state.data.length})`;
 
     if (this.state.data.length)
     {
@@ -154,7 +155,7 @@ class DisplayMain extends React.Component
         </div>
 
         <div className="footer">
-          <p>{statuses.fullfile}</p>
+          <p>{`${statuses.fullfile} ${imageCount}`}</p>
         </div>
       </div>
     </>);

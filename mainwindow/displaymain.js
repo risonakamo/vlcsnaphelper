@@ -117,6 +117,7 @@ class DisplayMain extends React.Component {
       time: "no more images",
       fullfile: ""
     };
+    var imageCount = `(${this.state.currentImage + 1}/${this.state.data.length})`;
 
     if (this.state.data.length) {
       currentImage = this.state.data[this.state.currentImage];
@@ -142,7 +143,7 @@ class DisplayMain extends React.Component {
       className: "button half"
     }, "\uD83E\uDC3A")), React.createElement("div", {
       className: "footer"
-    }, React.createElement("p", null, statuses.fullfile))));
+    }, React.createElement("p", null, `${statuses.fullfile} ${imageCount}`))));
   }
 
 } //ImgDisplay(object data)
