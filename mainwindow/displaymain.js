@@ -13,7 +13,7 @@ class DisplayMain extends React.Component {
   keyControl() {
     //quick way because im not feeling like it
     //0: enter, 1: k, 2: space
-    var keyDownAlready = [0, 0, 0];
+    this.keyDownAlready = [0, 0, 0];
     window.addEventListener("keydown", e => {
       if (!this.state.data.length) {
         return;
@@ -29,49 +29,32 @@ class DisplayMain extends React.Component {
           break;
 
         case "Enter":
-          if (keyDownAlready[0]) {
-            return;
-          }
-
-          keyDownAlready[0] = 1;
-          this.removeImage(this.state.currentImage, 0);
+          this.doneAction();
           break;
 
         case " ":
-          if (keyDownAlready[2]) {
-            return;
-          }
-
-          keyDownAlready[2] = 1;
-
-          _imageControl.openVLC(this.state.data[this.state.currentImage]);
-
+          this.openVLCAction();
           break;
 
         case "k":
         case "K":
-          if (keyDownAlready[1]) {
-            return;
-          }
-
-          keyDownAlready[1] = 1;
-          this.removeImage(this.state.currentImage, 1);
+          this.keepAction();
           break;
       }
     });
     window.addEventListener("keyup", e => {
       switch (e.key) {
         case "Enter":
-          keyDownAlready[0] = 0;
+          this.keyDownAlready[0] = 0;
           break;
 
         case " ":
-          keyDownAlready[2] = 0;
+          this.keyDownAlready[2] = 0;
           break;
 
         case "k":
         case "K":
-          keyDownAlready[1] = 0;
+          this.keyDownAlready[1] = 0;
           break;
       }
     });
@@ -109,6 +92,44 @@ class DisplayMain extends React.Component {
     }
 
     this.setState(changeData);
+  } //the done action. put in a function for organisation
+  //done the current image and remove it from the array
+
+
+  doneAction() {
+    if (this.keyDownAlready[0]) {
+      return;
+    }
+
+    this.keyDownAlready[0] = 1;
+    this.removeImage(this.state.currentImage, 0);
+  } //the keep action. put in a function for organisation
+  //keep the current image and remove it from the array
+
+  /*ok so it looks the same as done action. but why not
+    merge it? well cause it wouldn't be intuative. these
+    weren't even suppose to be in functions anyway.
+    so whatever.*/
+
+
+  keepAction() {
+    if (this.keyDownAlready[1]) {
+      return;
+    }
+
+    this.keyDownAlready[1] = 1;
+    this.removeImage(this.state.currentImage, 1);
+  } //open vlc for the current image
+
+
+  openVLCAction() {
+    if (this.keyDownAlready[2]) {
+      return;
+    }
+
+    this.keyDownAlready[2] = 1;
+
+    _imageControl.openVLC(this.state.data[this.state.currentImage]);
   }
 
   render() {
