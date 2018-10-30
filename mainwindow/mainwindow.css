@@ -58,32 +58,41 @@ p {
   width: auto;
 }
 .menu {
-  min-height: 130px;
   font-size: 20px;
 }
-.menu > div {
-  display: inline-block;
-}
 .menu .statuses {
-  width: 500px;
   color: #39869f;
+  padding: 20px 0 20px 0;
 }
 .menu .statuses h1 {
+  display: inline-block;
   height: 65px;
   font-size: 65px;
   font-weight: 400;
   line-height: 1;
+  vertical-align: middle;
 }
-.menu .statuses p {
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.2;
-}
-.menu .control .button {
+.menu .statuses .button {
+  display: inline-block;
   height: 40px;
   width: 100px;
   border-color: rgba(185,194,197, 0.24) rgba(185,194,197, 0.24) #b9c2c5 #b9c2c5;
   border-style: solid;
   border-width: 1px 1px 3px 3px;
   border-radius: 4px;
+  text-align: center;
+  line-height: 40px;
+  vertical-align: middle;
+  color: #b9c2c5;
+  margin: 5px;
+  font-weight: 400;
+  font-size: 16px;
+}
+.menu .statuses .button.half {
+  width: 43px;
+}
+.menu .footer p {
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 1.2;
 }

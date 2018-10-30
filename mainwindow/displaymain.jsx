@@ -145,13 +145,16 @@ class DisplayMain extends React.Component
       <div className="menu">
         <div className="statuses">
           <h1>{statuses.time}</h1>
-          <p>{statuses.fullfile}</p>
+
+          <div className="button">DONE</div>
+          <div className="button">KEEP</div>
+          <div className="button">LINK</div>
+          <div className="button half">🠸</div>
+          <div className="button half">🠺</div>
         </div>
 
-        <div className="control">
-          <div className="button">
-
-          </div>
+        <div className="footer">
+          <p>{statuses.fullfile}</p>
         </div>
       </div>
     </>);

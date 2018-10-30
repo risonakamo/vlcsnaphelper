@@ -130,11 +130,19 @@ class DisplayMain extends React.Component {
       className: "menu"
     }, React.createElement("div", {
       className: "statuses"
-    }, React.createElement("h1", null, statuses.time), React.createElement("p", null, statuses.fullfile)), React.createElement("div", {
-      className: "control"
-    }, React.createElement("div", {
+    }, React.createElement("h1", null, statuses.time), React.createElement("div", {
       className: "button"
-    }))));
+    }, "DONE"), React.createElement("div", {
+      className: "button"
+    }, "KEEP"), React.createElement("div", {
+      className: "button"
+    }, "LINK"), React.createElement("div", {
+      className: "button half"
+    }, "\uD83E\uDC38"), React.createElement("div", {
+      className: "button half"
+    }, "\uD83E\uDC3A")), React.createElement("div", {
+      className: "footer"
+    }, React.createElement("p", null, statuses.fullfile))));
   }
 
 } //ImgDisplay(object data)

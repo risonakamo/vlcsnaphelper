@@ -61,45 +61,54 @@ h1,p
 
 .menu
 {
-    min-height: 130px;
     font-size: 20px;
-
-    &>div
-    {
-        display: inline-block;
-    }
 
     .statuses
     {
-        width: 500px;
         color: @main-blue;
+        padding: 20px 0 20px 0;
 
         h1
         {
+            display: inline-block;
             height: 65px;
             font-size: 65px;
             font-weight: 400;
             line-height: 1;
+            vertical-align: middle;
         }
 
-        p
-        {
-            font-size: 15px;
-            font-weight: 300;
-            line-height: 1.2;
-        }
-    }
-
-    .control
-    {
         .button
         {
+            display: inline-block;
             height: 40px;
             width: 100px;
             border-color: rgba(@main-white-rgb,0.24) rgba(@main-white-rgb,0.24) @main-white @main-white;
             border-style: solid;
             border-width: 1px 1px 3px 3px;
             border-radius: 4px;
+            text-align: center;
+            line-height: 40px;
+            vertical-align: middle;
+            color: @main-white;
+            margin: 5px;
+            font-weight: 400;
+            font-size: 16px;
+
+            &.half
+            {
+                width: 43px;
+            }
+        }
+    }
+
+    .footer
+    {
+        p
+        {
+            font-size: 12px;
+            font-weight: 200;
+            line-height: 1.2;
         }
     }
 }
