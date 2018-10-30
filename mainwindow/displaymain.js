@@ -1,6 +1,9 @@
 class DisplayMain extends React.Component {
   constructor(props) {
     super(props);
+    this.doneAction = this.doneAction.bind(this);
+    this.keepAction = this.keepAction.bind(this);
+    this.openVLCAction = this.openVLCAction.bind(this);
     this.state = {
       data: this.props.data,
       currentImage: 0
@@ -25,15 +28,30 @@ class DisplayMain extends React.Component {
           break;
 
         case "Enter":
+          if (this.keyDownAlready[0]) {
+            return;
+          }
+
+          this.keyDownAlready[0] = 1;
           this.doneAction();
           break;
 
         case " ":
+          if (this.keyDownAlready[2]) {
+            return;
+          }
+
+          this.keyDownAlready[2] = 1;
           this.openVLCAction();
           break;
 
         case "k":
         case "K":
+          if (this.keyDownAlready[1]) {
+            return;
+          }
+
+          this.keyDownAlready[1] = 1;
           this.keepAction();
           break;
       }
@@ -88,30 +106,14 @@ class DisplayMain extends React.Component {
   }
 
   doneAction() {
-    if (this.keyDownAlready[0]) {
-      return;
-    }
-
-    this.keyDownAlready[0] = 1;
     this.removeImage(this.state.currentImage, 0);
   }
 
   keepAction() {
-    if (this.keyDownAlready[1]) {
-      return;
-    }
-
-    this.keyDownAlready[1] = 1;
     this.removeImage(this.state.currentImage, 1);
   }
 
   openVLCAction() {
-    if (this.keyDownAlready[2]) {
-      return;
-    }
-
-    this.keyDownAlready[2] = 1;
-
     _imageControl.openVLC(this.state.data[this.state.currentImage]);
   }
 
