@@ -172,11 +172,11 @@ class DisplayMain extends React.Component
         <div className="statuses">
           <h1>{statuses.time}</h1>
 
-          <div className="button">DONE</div>
-          <div className="button">KEEP</div>
-          <div className="button">LINK</div>
-          <div className="button half">🠸</div>
-          <div className="button half">🠺</div>
+          <div className="button" onClick={this.doneAction}>DONE</div>
+          <div className="button" onClick={this.keepAction}>KEEP</div>
+          <div className="button" onClick={this.openVLCAction}>LINK</div>
+          <div className="button half" onClick={()=>{this.changeImage(-1)}}>🠸</div>
+          <div className="button half" onClick={()=>{this.changeImage(1)}}>🠺</div>
         </div>
 
         <div className="footer">

@@ -1,4 +1,3 @@
-//DisplayMain(object-array data)
 class DisplayMain extends React.Component {
   constructor(props) {
     super(props);
@@ -7,12 +6,9 @@ class DisplayMain extends React.Component {
       currentImage: 0
     };
     this.keyControl();
-  } //global window keyboard operations
-
+  }
 
   keyControl() {
-    //quick way because im not feeling like it
-    //0: enter, 1: k, 2: space
     this.keyDownAlready = [0, 0, 0];
     window.addEventListener("keydown", e => {
       if (!this.state.data.length) {
@@ -58,8 +54,7 @@ class DisplayMain extends React.Component {
           break;
       }
     });
-  } //increment current image index in specified direction
-
+  }
 
   changeImage(add) {
     var nextImage = this.state.currentImage + add;
@@ -71,9 +66,7 @@ class DisplayMain extends React.Component {
     this.setState({
       currentImage: nextImage
     });
-  } //remove the image at the specified index in the images array
-  //and place in the specified moveDir index
-
+  }
 
   removeImage(index, moveDir) {
     if (!this.state.data.length) {
@@ -92,9 +85,7 @@ class DisplayMain extends React.Component {
     }
 
     this.setState(changeData);
-  } //the done action. put in a function for organisation
-  //done the current image and remove it from the array
-
+  }
 
   doneAction() {
     if (this.keyDownAlready[0]) {
@@ -103,14 +94,7 @@ class DisplayMain extends React.Component {
 
     this.keyDownAlready[0] = 1;
     this.removeImage(this.state.currentImage, 0);
-  } //the keep action. put in a function for organisation
-  //keep the current image and remove it from the array
-
-  /*ok so it looks the same as done action. but why not
-    merge it? well cause it wouldn't be intuative. these
-    weren't even suppose to be in functions anyway.
-    so whatever.*/
-
+  }
 
   keepAction() {
     if (this.keyDownAlready[1]) {
@@ -119,8 +103,7 @@ class DisplayMain extends React.Component {
 
     this.keyDownAlready[1] = 1;
     this.removeImage(this.state.currentImage, 1);
-  } //open vlc for the current image
-
+  }
 
   openVLCAction() {
     if (this.keyDownAlready[2]) {
@@ -153,23 +136,30 @@ class DisplayMain extends React.Component {
     }, React.createElement("div", {
       className: "statuses"
     }, React.createElement("h1", null, statuses.time), React.createElement("div", {
-      className: "button"
+      className: "button",
+      onClick: this.doneAction
     }, "DONE"), React.createElement("div", {
-      className: "button"
+      className: "button",
+      onClick: this.keepAction
     }, "KEEP"), React.createElement("div", {
-      className: "button"
+      className: "button",
+      onClick: this.openVLCAction
     }, "LINK"), React.createElement("div", {
-      className: "button half"
+      className: "button half",
+      onClick: () => {
+        this.changeImage(-1);
+      }
     }, "\uD83E\uDC38"), React.createElement("div", {
-      className: "button half"
+      className: "button half",
+      onClick: () => {
+        this.changeImage(1);
+      }
     }, "\uD83E\uDC3A")), React.createElement("div", {
       className: "footer"
     }, React.createElement("p", null, `${statuses.fullfile} ${imageCount}`))));
   }
 
-} //ImgDisplay(object data)
-//data: imageData object
-
+}
 
 class ImgDisplay extends React.Component {
   constructor(props) {
@@ -184,7 +174,6 @@ class ImgDisplay extends React.Component {
   }
 
   fitImg() {
-    //if img resolution is less than window resolution, set tall fit
     if (this.theImg.current.naturalWidth / this.theImg.current.naturalHeight < this.displayDiv.current.scrollWidth / this.displayDiv.current.scrollHeight) {
       this.setState({
         tall: 1
