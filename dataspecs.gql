@@ -1,8 +1,8 @@
 type imageData
 {
     time: string #string time
-    # seconds: int
-    # filename: string
+    seconds: int #the time in seconds
+    videopath: string #full path to video file
     imagepath: string #the full path to the image
     fullfile: string #the full file name without any path
 }

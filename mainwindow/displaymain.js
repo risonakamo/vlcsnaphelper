@@ -11,8 +11,14 @@ class DisplayMain extends React.Component {
 
 
   keyControl() {
-    var keyDownAlready = [0, 0];
+    //quick way because im not feeling like it
+    //0: enter, 1: k, 2: space
+    var keyDownAlready = [0, 0, 0];
     window.addEventListener("keydown", e => {
+      if (!this.state.data.length) {
+        return;
+      }
+
       switch (e.key) {
         case "ArrowRight":
           this.changeImage(1);
@@ -31,7 +37,19 @@ class DisplayMain extends React.Component {
           this.removeImage(this.state.currentImage, 0);
           break;
 
-        case "Shift":
+        case " ":
+          if (keyDownAlready[2]) {
+            return;
+          }
+
+          keyDownAlready[2] = 1;
+
+          _imageControl.openVLC(this.state.data[this.state.currentImage]);
+
+          break;
+
+        case "k":
+        case "K":
           if (keyDownAlready[1]) {
             return;
           }
@@ -47,7 +65,12 @@ class DisplayMain extends React.Component {
           keyDownAlready[0] = 0;
           break;
 
-        case "Shift":
+        case " ":
+          keyDownAlready[2] = 0;
+          break;
+
+        case "k":
+        case "K":
           keyDownAlready[1] = 0;
           break;
       }

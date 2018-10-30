@@ -1,4 +1,5 @@
 const fs=require("fs-extra");
+const child_process=require("child_process");
 
 /*ImageControl(function completeCallback(object-array data))
 -completeCallback: callback function to be called with array of
@@ -15,9 +16,10 @@ class ImageControl
 
         //set to the directory with images
         this.imageDir="/Users/khang/Desktop/videos/memes/";
+        this.videoDir="/Users/khang/Desktop/videos/completed";
 
         //0: done directory, 1: keep directory
-        this.moveDirs=["/Users/khang/Desktop/videos/memes/done","/Users/khang/Desktop/videos/memes/keep"];
+        this.moveDirs=["/Users/khang/Desktop/videos/memes/done","/Users/khang/Desktop/videos/memes/keep2"];
 
         if (!fs.existsSync(this.imageDir))
         {
@@ -46,7 +48,7 @@ class ImageControl
                 }
 
                 //extracting time,time,time,filename, with a check for png
-                rmatch=x.match(/(\d{2})_(\d{2})_(\d{2})_(.*)\.png/);
+                rmatch=x.match(/(\d{2})_(\d{2})_(\d{2})_(.*)_\d*\.png/);
 
                 if (!rmatch)
                 {
@@ -54,9 +56,11 @@ class ImageControl
                     return;
                 }
 
+                //imageData object
                 this.images.push({
                     time:`${rmatch[1]}:${rmatch[2]}:${rmatch[3]}`,
-                    // filename:rmatch[4],
+                    seconds:(parseInt(rmatch[1])*3600)+(parseInt(rmatch[2])*60)+parseInt(rmatch[3]),
+                    videopath:`c:\\${this.videoDir}\\${rmatch[4]}`.replace(/\//g,"\\"),
                     imagepath:`${this.imageDir}/${x}`,
                     fullfile:x
                 });
@@ -80,6 +84,16 @@ class ImageControl
     relocateFile(fileData,moveDir)
     {
         fs.move(fileData.imagepath,`${this.moveDirs[moveDir]}/${fileData.fullfile}`);
+    }
+
+    //open a vlc given an imageData object
+    openVLC(fileData)
+    {
+        child_process.exec(`vlc --start-time=${fileData.seconds} --one-instance --no-qt-video-autoresize --no-spu "${fileData.videopath}"`,
+            {
+                encoding:"utf8"
+            }
+        );
     }
 }
 
