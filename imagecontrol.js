@@ -16,6 +16,8 @@ class ImageControl
 
         //set to the directory with images
         this.imageDir="/Users/khang/Desktop/videos/memes/";
+
+        //directory to find image-link videos
         this.videoDir="/Users/khang/Desktop/videos/completed";
 
         //0: done directory, 1: keep directory
@@ -89,7 +91,7 @@ class ImageControl
     //open a vlc given an imageData object
     openVLC(fileData)
     {
-        child_process.exec(`vlc --start-time=${fileData.seconds} --one-instance --no-qt-video-autoresize --no-spu "${fileData.videopath}"`,
+        child_process.exec(`vlc --start-time=${fileData.seconds} --no-one-instance --no-qt-video-autoresize --no-spu "${fileData.videopath}"`,
             {
                 encoding:"utf8"
             }
