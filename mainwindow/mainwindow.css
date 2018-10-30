@@ -61,9 +61,11 @@ p {
   min-height: 130px;
   font-size: 20px;
 }
+.menu > div {
+  display: inline-block;
+}
 .menu .statuses {
   width: 500px;
-  display: inline-block;
   color: #39869f;
 }
 .menu .statuses h1 {
@@ -76,4 +78,12 @@ p {
   font-size: 15px;
   font-weight: 300;
   line-height: 1.2;
+}
+.menu .control .button {
+  height: 40px;
+  width: 100px;
+  border-color: rgba(185,194,197, 0.24) rgba(185,194,197, 0.24) #b9c2c5 #b9c2c5;
+  border-style: solid;
+  border-width: 1px 1px 3px 3px;
+  border-radius: 4px;
 }

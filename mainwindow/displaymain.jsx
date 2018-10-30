@@ -149,7 +149,9 @@ class DisplayMain extends React.Component
         </div>
 
         <div className="control">
+          <div className="button">
 
+          </div>
         </div>
       </div>
     </>);

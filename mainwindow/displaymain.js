@@ -132,7 +132,9 @@ class DisplayMain extends React.Component {
       className: "statuses"
     }, React.createElement("h1", null, statuses.time), React.createElement("p", null, statuses.fullfile)), React.createElement("div", {
       className: "control"
-    })));
+    }, React.createElement("div", {
+      className: "button"
+    }))));
   }
 
 } //ImgDisplay(object data)
