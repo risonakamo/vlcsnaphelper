@@ -179,15 +179,21 @@ class DisplayMain extends React.Component {
       className: "button",
       onClick: this.doneAction,
       ref: this.collectButtonRefs
-    }, "DONE"), React.createElement("div", {
+    }, React.createElement("p", null, "DONE"), React.createElement("p", {
+      className: "key"
+    }, "Enter")), React.createElement("div", {
       className: "button",
       onClick: this.keepAction,
       ref: this.collectButtonRefs
-    }, "KEEP"), React.createElement("div", {
+    }, React.createElement("p", null, "KEEP"), React.createElement("p", {
+      className: "key"
+    }, "K")), React.createElement("div", {
       className: "button",
       onClick: this.openVLCAction,
       ref: this.collectButtonRefs
-    }, "LINK"), React.createElement("div", {
+    }, React.createElement("p", null, "LINK"), React.createElement("p", {
+      className: "key"
+    }, "Space")), React.createElement("div", {
       className: "button half",
       onClick: () => {
         this.changeImage(-1);

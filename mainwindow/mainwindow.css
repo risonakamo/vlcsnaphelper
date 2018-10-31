@@ -78,6 +78,7 @@ p {
 }
 .menu .statuses .button {
   display: inline-block;
+  position: relative;
   height: 40px;
   width: 100px;
   border-color: rgba(185,194,197, 0.24) rgba(185,194,197, 0.24) #b9c2c5 #b9c2c5;
@@ -101,6 +102,16 @@ p {
 }
 .menu .statuses .button:active {
   background-color: rgba(185,194,197, 0.25);
+}
+.menu .statuses .button .key {
+  position: absolute;
+  height: 10px;
+  width: 100%;
+  top: 30px;
+  font-size: 12px;
+  font-weight: 200;
+  font-style: italic;
+  opacity: 0.7;
 }
 .menu .footer p {
   font-size: 12px;

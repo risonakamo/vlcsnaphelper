@@ -85,6 +85,7 @@ h1,p
         .button
         {
             display: inline-block;
+            position: relative;
             height: 40px;
             width: 100px;
             border-color: rgba(@main-white-rgb,0.24) rgba(@main-white-rgb,0.24) @main-white @main-white;
@@ -113,6 +114,18 @@ h1,p
             &:active
             {
                 background-color: rgba(@main-white-rgb,0.25);
+            }
+
+            .key
+            {
+                position: absolute;
+                height: 10px;
+                width: 100%;
+                top: 30px;
+                font-size: 12px;
+                font-weight: 200;
+                font-style: italic;
+                opacity: .7;
             }
         }
     }
