@@ -112,12 +112,7 @@ h1,p
 
             &:active
             {
-                background-color: rgba(@main-white-rgb,0.24);
-            }
-
-            &.animatePress
-            {
-                animation: pressButton .2s;
+                background-color: rgba(@main-white-rgb,0.25);
             }
         }
     }
@@ -130,18 +125,5 @@ h1,p
             font-weight: 200;
             line-height: 1.2;
         }
-    }
-}
-
-@keyframes pressButton
-{
-    50%
-    {
-        background-color: rgba(@main-white-rgb,0.24);
-    }
-
-    100%
-    {
-        background-color: rgba(@main-white-rgb,0);
     }
 }

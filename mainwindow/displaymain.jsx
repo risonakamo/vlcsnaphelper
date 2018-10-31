@@ -95,7 +95,7 @@ class DisplayMain extends React.Component
   }
 
   //increment current image index in specified direction
-  changeImage(add,playAnimation=0)
+  changeImage(add,playAnimation)
   {
     var nextImage=this.state.currentImage+add;
 
@@ -145,7 +145,7 @@ class DisplayMain extends React.Component
 
   //the done action. put in a function for organisation
   //done the current image and remove it from the array
-  doneAction(e,animate=0)
+  doneAction(e,animate)
   {
     this.removeImage(this.state.currentImage,0);
 
@@ -162,7 +162,7 @@ class DisplayMain extends React.Component
     merge it? well cause it wouldn't be intuative. these
     weren't even suppose to be in functions anyway.
     so whatever.*/
-  keepAction(e,animate=0)
+  keepAction(e,animate)
   {
     this.removeImage(this.state.currentImage,1);
 
@@ -192,11 +192,12 @@ class DisplayMain extends React.Component
   //play the press animation of mainbutton at certain index
   pressAnimation(index)
   {
-    //reset animation trick
-    this.mainButtons[index].animation="none";
-    this.mainButtons[index].offsetHeight;
-    this.mainButtons[index].animation=null;
-    this.mainButtons[index].classList.add("animatePress");
+    //colour is @main-white-rgb in less
+    this.mainButtons[index].animate([
+      {backgroundColor:"rgba(185,194,197,0)"},
+      {backgroundColor:"rgba(185,194,197,.25)",offset:.5},
+      {backgroundColor:"rgba(185,194,197,0)"}
+    ],200);
   }
 
   render()

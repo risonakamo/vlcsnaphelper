@@ -77,7 +77,7 @@ class DisplayMain extends React.Component {
     });
   }
 
-  changeImage(add, playAnimation = 0) {
+  changeImage(add, playAnimation) {
     var nextImage = this.state.currentImage + add;
 
     if (nextImage < 0 || nextImage >= this.state.data.length) {
@@ -116,7 +116,7 @@ class DisplayMain extends React.Component {
     this.setState(changeData);
   }
 
-  doneAction(e, animate = 0) {
+  doneAction(e, animate) {
     this.removeImage(this.state.currentImage, 0);
 
     if (animate) {
@@ -124,7 +124,7 @@ class DisplayMain extends React.Component {
     }
   }
 
-  keepAction(e, animate = 0) {
+  keepAction(e, animate) {
     this.removeImage(this.state.currentImage, 1);
 
     if (animate) {
@@ -145,10 +145,14 @@ class DisplayMain extends React.Component {
   }
 
   pressAnimation(index) {
-    this.mainButtons[index].animation = "none";
-    this.mainButtons[index].offsetHeight;
-    this.mainButtons[index].animation = null;
-    this.mainButtons[index].classList.add("animatePress");
+    this.mainButtons[index].animate([{
+      backgroundColor: "rgba(185,194,197,0)"
+    }, {
+      backgroundColor: "rgba(185,194,197,.25)",
+      offset: .5
+    }, {
+      backgroundColor: "rgba(185,194,197,0)"
+    }], 200);
   }
 
   render() {
