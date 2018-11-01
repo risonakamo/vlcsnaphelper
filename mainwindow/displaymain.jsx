@@ -223,20 +223,22 @@ class DisplayMain extends React.Component
         <div className="statuses">
           <h1>{statuses.time}</h1>
 
-          <div className="button" onClick={this.doneAction} ref={this.collectButtonRefs}>
-            <p>DONE</p>
-            <p className="key">Enter</p>
+          <div className="button-hold">
+            <div className="button" onClick={this.doneAction} ref={this.collectButtonRefs}>
+              <p>DONE</p>
+              <p className="key">Enter</p>
+            </div>
+            <div className="button" onClick={this.keepAction} ref={this.collectButtonRefs}>
+              <p>KEEP</p>
+              <p className="key">K</p>
+            </div>
+            <div className="button" onClick={this.openVLCAction} ref={this.collectButtonRefs}>
+              <p>LINK</p>
+              <p className="key">Space</p>
+            </div>
+            <div className="button half" onClick={()=>{this.changeImage(-1)}} ref={this.collectButtonRefs}>🠸</div>
+            <div className="button half" onClick={()=>{this.changeImage(1)}} ref={this.collectButtonRefs}>🠺</div>
           </div>
-          <div className="button" onClick={this.keepAction} ref={this.collectButtonRefs}>
-            <p>KEEP</p>
-            <p className="key">K</p>
-          </div>
-          <div className="button" onClick={this.openVLCAction} ref={this.collectButtonRefs}>
-            <p>LINK</p>
-            <p className="key">Space</p>
-          </div>
-          <div className="button half" onClick={()=>{this.changeImage(-1)}} ref={this.collectButtonRefs}>🠸</div>
-          <div className="button half" onClick={()=>{this.changeImage(1)}} ref={this.collectButtonRefs}>🠺</div>
         </div>
 
         <div className="footer">

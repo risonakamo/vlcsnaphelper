@@ -176,6 +176,8 @@ class DisplayMain extends React.Component {
     }, React.createElement("div", {
       className: "statuses"
     }, React.createElement("h1", null, statuses.time), React.createElement("div", {
+      className: "button-hold"
+    }, React.createElement("div", {
       className: "button",
       onClick: this.doneAction,
       ref: this.collectButtonRefs
@@ -205,7 +207,7 @@ class DisplayMain extends React.Component {
         this.changeImage(1);
       },
       ref: this.collectButtonRefs
-    }, "\uD83E\uDC3A")), React.createElement("div", {
+    }, "\uD83E\uDC3A"))), React.createElement("div", {
       className: "footer"
     }, React.createElement("p", null, `${statuses.fullfile} ${imageCount}`))));
   }

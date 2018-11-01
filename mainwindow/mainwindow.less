@@ -5,6 +5,7 @@
 @main-white-rgb: ~"185,194,197";
 
 @small-screen1: ~"max-width: 770px";
+@small-screen2: ~"max-width: 495px";
 
 @import "fonts.less";
 
@@ -95,6 +96,15 @@ h1,p
             }
         }
 
+        .button-hold
+        {
+            @media (@small-screen2)
+            {
+                width: 340px;
+                margin: auto;
+            }
+        }
+
         .button
         {
             display: inline-block;
@@ -108,7 +118,8 @@ h1,p
             text-align: center;
             line-height: 40px;
             color: @main-white;
-            margin: 5px;
+            // margin: 5px;
+            margin: 8px 5px 8px 5px;
             font-weight: 400;
             font-size: 16px;
             user-select: none;
