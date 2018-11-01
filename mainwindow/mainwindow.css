@@ -63,10 +63,16 @@ p {
 .menu .statuses {
   display: flex;
   color: #39869f;
-  padding: 20px 0 20px 0;
+  padding: 20px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  text-align: center;
+}
+@media (max-width: 770px) {
+  .menu .statuses {
+    display: block;
+  }
 }
 .menu .statuses h1 {
   display: inline-block;
@@ -75,6 +81,11 @@ p {
   font-weight: 400;
   line-height: 1;
   margin-right: 20px;
+}
+@media (max-width: 770px) {
+  .menu .statuses h1 {
+    display: block;
+  }
 }
 .menu .statuses .button {
   display: inline-block;
