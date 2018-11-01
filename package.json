@@ -1,5 +1,6 @@
 {
   "name": "vlcsnaphelper2",
+  "productName":"vlcsnaphelper 2",
   "main": "main.js",
   "version": "2.0.0",
   "devDependencies": {
