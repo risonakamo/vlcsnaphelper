@@ -225,15 +225,15 @@ class DisplayMain extends React.Component
 
           <div className="button-hold">
             <div className="button" onClick={this.doneAction} ref={this.collectButtonRefs}>
-              <p>DONE</p>
+              <p>完了</p>
               <p className="key">Enter</p>
             </div>
             <div className="button" onClick={this.keepAction} ref={this.collectButtonRefs}>
-              <p>KEEP</p>
+              <p>キープ</p>
               <p className="key">K</p>
             </div>
             <div className="button" onClick={this.openVLCAction} ref={this.collectButtonRefs}>
-              <p>LINK</p>
+              <p>リンク</p>
               <p className="key">Space</p>
             </div>
             <div className="button half" onClick={()=>{this.changeImage(-1)}} ref={this.collectButtonRefs}>🠸</div>
