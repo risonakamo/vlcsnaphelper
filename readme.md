@@ -1,5 +1,5 @@
 ## vlc snap help
-so that i dont forget how to use this thing. what does it do? it helps you go through that folder of vlc screenshots you have.
+so that i dont forget how to use this thing. what does it do? it helps you go through that folder of vlc screenshots you have. image-link to time stamp.
 
 ![](https://i.imgur.com/yopvPnx.png)
 
