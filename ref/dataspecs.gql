@@ -5,4 +5,6 @@ type imageData
     videopath: string #full path to video file
     imagepath: string #the full path to the image
     fullfile: string #the full file name without any path
+
+    createTime: int #creation time of the image
 }

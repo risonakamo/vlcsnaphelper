@@ -64,7 +64,8 @@ class ImageControl
                     seconds:(parseInt(rmatch[1])*3600)+(parseInt(rmatch[2])*60)+parseInt(rmatch[3]),
                     videopath:`c:\\${this.videoDir}\\${rmatch[4]}`.replace(/\//g,"\\"),
                     imagepath:`${this.imageDir}/${x}`,
-                    fullfile:x
+                    fullfile:x,
+                    createTime:stats.birthtimeMs
                 });
 
                 this.completeCheck();
@@ -77,6 +78,11 @@ class ImageControl
         this.fileCount++;
         if (this.fileCount>=this.files.length)
         {
+            //sort by most recent first
+            this.images.sort((a,b)=>{
+                return b.createTime-a.createTime;
+            });
+
             this.completeCallback(this.images);
         }
     }
